@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "🔍 Checking Tempo node status..."
-docker ps --filter "name=tempo-node"
+sudo docker ps --filter "name=tempo-node"
 
 if docker ps | grep -q tempo-node; then
   echo "✅ Node is RUNNING"
