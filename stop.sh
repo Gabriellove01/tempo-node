@@ -1,11 +1,13 @@
 #!/bin/bash
-# stop.sh - stops the Tempo node container
+# Stop the running node
 
-CONTAINER_NAME="tempo-node"
+NODE_PID=$(pgrep -f "tempo-node")
 
-if [ "$(docker ps -q -f name=$CONTAINER_NAME)" ]; then
-    docker stop $CONTAINER_NAME
+if [ -n "$NODE_PID" ]; then
+    echo "Stopping node (PID: $NODE_PID)..."
+    kill "$NODE_PID"
     echo "Node stopped."
 else
-    echo "No running node container found."
+    echo "Node is not running."
 fi
+read -p "Press Enter to continue..."
