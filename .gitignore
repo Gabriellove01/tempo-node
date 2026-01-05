@@ -1,0 +1,4 @@
+.tempo/
+tempo-backups/
+*.swp
+*.DS_Store
