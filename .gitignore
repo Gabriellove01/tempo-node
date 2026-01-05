@@ -1,4 +1,47 @@
-.tempo/
-tempo-backups/
+# =================================
+# Tempo Node runtime and data
+# =================================
+
+# Node configuration and runtime folder
+.tempo-node/
+
+# Node identity
+.tempo-node-id
+
+# Wallet / private key
+.tempo-node/wallet.txt
+
+# Backups
+tempo-node-backup/
+
+# Node logs
+.tempo-node/tempo.log
+
+# =================================
+# OS / editor files
+# =================================
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
 *.swp
-*.DS_Store
+
+# =================================
+# Python / other language cache (if used)
+# =================================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# =================================
+# Temporary files
+# =================================
+*.tmp
+*.log
+*.bak
+
+# =================================
+# Ignore the ZIP file if you generate one locally
+# =================================
+tempo-node-scripts.zip
