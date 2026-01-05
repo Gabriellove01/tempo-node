@@ -1,12 +1,15 @@
 #!/bin/bash
+# status.sh - checks node container status
 
-echo "🔍 Checking Tempo node status..."
-sudo docker ps --filter "name=tempo-node"
+CONTAINER_NAME="tempo-node"
 
-if docker ps | grep -q tempo-node; then
-  echo "✅ Node is RUNNING"
-else
-  echo "❌ Node is NOT running"
+if ! docker info >/dev/null 2>&1; then
+    echo "Cannot access Docker. Make sure your user is in the docker group."
+    exit 1
 fi
 
-read -p "Press Enter to return to menu..."
+if [ "$(docker ps -q -f name=$CONTAINER_NAME)" ]; then
+    echo "Node is RUNNING (container: $CONTAINER_NAME)"
+else
+    echo "Node is NOT running"
+fi
