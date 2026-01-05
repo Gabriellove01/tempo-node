@@ -9,6 +9,9 @@ while true; do
   echo "6) Restore Identity"
   echo "7) Validator / Wallet Setup"
   echo "8) Update Node"
+  echo "9) Check Status"
+  echo "10) View Logs"
+  echo "11) Test RPC"
   echo "0) Exit"
   read -p "Select option: " OPTION
 
@@ -21,6 +24,9 @@ while true; do
     6) read -p "Enter backup file path: " FILE; ./restore.sh "$FILE" ;;
     7) ./validator_setup.sh ;;
     8) ./update.sh ;;
+    9) ./status.sh ;;
+    10) ./logs.sh ;;
+    11) ./rpc-test.sh ;;
     0) exit 0 ;;
     *) echo "Invalid option" ;;
   esac
