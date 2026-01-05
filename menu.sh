@@ -1,68 +1,27 @@
 #!/bin/bash
-
 while true; do
-    clear
-    echo "===================================="
-    echo "        TEMPO NODE MANAGER"
-    echo "===================================="
-    echo "1) Install Node"
-    echo "2) Start Node"
-    echo "3) Show Node ID"
-    echo "4) Backup Identity"
-    echo "5) Restore Identity"
-    echo "6) Validator/Wallet Setup"
-    echo "7) Update Node"
-    echo "8) Check Status"
-    echo "9) View Logs"
-    echo "10) Test RPC"
-    echo "0) Exit"
-    echo "------------------------------------"
-    read -p "Select an option: " choice
+  echo "====== Tempo Node Manager ======"
+  echo "1) Install Node"
+  echo "2) Start Node"
+  echo "3) Stop Node"
+  echo "4) Show Node ID"
+  echo "5) Backup Identity"
+  echo "6) Restore Identity"
+  echo "7) Validator / Wallet Setup"
+  echo "8) Update Node"
+  echo "0) Exit"
+  read -p "Select option: " OPTION
 
-    case $choice in
-        1)
-            ./install.sh
-            ;;
-        2)
-            ./start.sh
-            ;;
-        3)
-            if [ -f "$HOME/.tempo-node-id" ]; then
-                echo "Node ID:"
-                cat "$HOME/.tempo-node-id"
-            else
-                echo "Node ID not found"
-            fi
-            read -p "Press Enter to continue..."
-            ;;
-        4)
-            ./backup.sh
-            ;;
-        5)
-            ./restore.sh
-            ;;
-        6)
-            ./validator-setup.sh
-            ;;
-        7)
-            ./update.sh
-            ;;
-        8)
-            ./status.sh
-            ;;
-        9)
-            ./logs.sh
-            ;;
-        10)
-            ./rpc-test.sh
-            ;;
-        0)
-            echo "Exiting..."
-            exit 0
-            ;;
-        *)
-            echo "Invalid option"
-            sleep 1
-            ;;
-    esac
+  case $OPTION in
+    1) ./install.sh ;;
+    2) ./start.sh ;;
+    3) ./stop.sh ;;
+    4) ./show_node_id.sh ;;
+    5) ./backup.sh ;;
+    6) read -p "Enter backup file path: " FILE; ./restore.sh "$FILE" ;;
+    7) ./validator_setup.sh ;;
+    8) ./update.sh ;;
+    0) exit 0 ;;
+    *) echo "Invalid option" ;;
+  esac
 done
