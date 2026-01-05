@@ -1,7 +1,9 @@
 #!/bin/bash
+
 while true; do
+  clear
   echo "====== Tempo Node Manager ======"
-  echo "1) Install Node"
+  echo "1) Install Node / Setup"
   echo "2) Start Node"
   echo "3) Stop Node"
   echo "4) Show Node ID"
@@ -13,21 +15,22 @@ while true; do
   echo "10) View Logs"
   echo "11) Test RPC"
   echo "0) Exit"
+  echo "------------------------------------"
   read -p "Select option: " OPTION
 
   case $OPTION in
-    1) ./install.sh ;;
+    1) ./setup.sh ;;
     2) ./start.sh ;;
     3) ./stop.sh ;;
     4) ./show_node_id.sh ;;
     5) ./backup.sh ;;
-    6) read -p "Enter backup file path: " FILE; ./restore.sh "$FILE" ;;
+    6) ./restore.sh ;;
     7) ./validator_setup.sh ;;
     8) ./update.sh ;;
     9) ./status.sh ;;
     10) ./logs.sh ;;
     11) ./rpc-test.sh ;;
-    0) exit 0 ;;
-    *) echo "Invalid option" ;;
+    0) echo "Exiting..."; exit 0 ;;
+    *) echo "Invalid option"; sleep 1 ;;
   esac
 done
