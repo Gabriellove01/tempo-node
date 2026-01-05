@@ -7,13 +7,14 @@ while true; do
     echo "===================================="
     echo "1) Install Node"
     echo "2) Start Node"
-    echo "3) Stop Node"
-    echo "4) Update Node"
-    echo "5) Setup Validator"
-    echo "6) Show Node ID"
-    echo "7) Check Status"
-    echo "8) View Logs"
-    echo "9) Test RPC"
+    echo "3) Show Node ID"
+    echo "4) Backup Identity"
+    echo "5) Restore Identity"
+    echo "6) Validator/Wallet Setup"
+    echo "7) Update Node"
+    echo "8) Check Status"
+    echo "9) View Logs"
+    echo "10) Test RPC"
     echo "0) Exit"
     echo "------------------------------------"
     read -p "Select an option: " choice
@@ -26,15 +27,6 @@ while true; do
             ./start.sh
             ;;
         3)
-            ./stop.sh
-            ;;
-        4)
-            ./update.sh
-            ;;
-        5)
-            ./validator-setup.sh
-            ;;
-        6)
             if [ -f "$HOME/.tempo-node-id" ]; then
                 echo "Node ID:"
                 cat "$HOME/.tempo-node-id"
@@ -43,13 +35,25 @@ while true; do
             fi
             read -p "Press Enter to continue..."
             ;;
+        4)
+            ./backup.sh
+            ;;
+        5)
+            ./restore.sh
+            ;;
+        6)
+            ./validator-setup.sh
+            ;;
         7)
-            ./status.sh
+            ./update.sh
             ;;
         8)
-            ./logs.sh
+            ./status.sh
             ;;
         9)
+            ./logs.sh
+            ;;
+        10)
             ./rpc-test.sh
             ;;
         0)
@@ -62,4 +66,3 @@ while true; do
             ;;
     esac
 done
-
