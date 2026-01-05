@@ -1,5 +1,10 @@
 #!/bin/bash
-mkdir -p $HOME/tempo-backups
-BACKUP_FILE="$HOME/tempo-backups/tempo-backup-$(date +%s).tar.gz"
-tar -czf "$BACKUP_FILE" -C "$HOME" .tempo
-echo "✅ Backup completed: $BACKUP_FILE"
+NODE_DIR="$HOME/.tempo-node"
+BACKUP_DIR="$HOME/tempo-node-backup"
+
+mkdir -p "$BACKUP_DIR"
+
+echo "Backing up identity and configs..."
+cp -r "$NODE_DIR" "$BACKUP_DIR"
+echo "Backup complete at $BACKUP_DIR"
+read -p "Press Enter to continue..."
